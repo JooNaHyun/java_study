@@ -1,0 +1,113 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- HTML 문서의 헤더에 문자 인코딩을 설정한다. -->
+<html>
+<head>
+<body>
+	<script>
+		function go1() {
+			const form = document.getElementById('insert'); // 'insert' id를 가진 폼 요소를 가져옵니다.
+			const name = form.elements.name.value; // 이름 필드의 값을 가져옵니다.
+			const kor = form.elements.korean.value; // 국어 점수 필드의 값을 가져옵니다.
+			const eng = form.elements.english.value; // 영어 점수 필드의 값을 가져옵니다.
+			const mat = form.elements.mathmatic.value; // 수학 점수 필드의 값을 가져옵니다.
+			const pattern1 = /^([a-zA-Z가-힣]+|[a-zA-Z0-9가-힣]+)$/; // 한글 또는 영어만 입력 가능한 패턴1, 한글, 영어, 숫자 조합도 입력 가능
+			const pattern2 = /^(?:100|[1-9]?[0-9])$/; // 0부터 100 사이의 정수만 입력 가능한 패턴2
+
+			if (name.trim() === '' || kor.trim() === '' || eng.trim() === ''
+					|| mat.trim() === '') {
+				alert('데이터를 모두 입력해주세요.'); // 데이터를 모두 입력하지 않은 경우 경고 메시지를 출력합니다.
+				return;
+			}
+			if (!pattern1.test(name)) {
+				alert('이름은 정확한 한글 또는 영어만 입력 가능합니다.'); // 이름이 올바른 패턴에 맞지 않는 경우 경고 메시지를 출력합니다.
+				return;
+			}
+			if (!pattern2.test(kor) || !pattern2.test(eng)
+					|| !pattern2.test(mat)) {
+				alert('국어, 영어, 수학 점수는 0부터 100 사이의 정수만 입력 가능합니다.'); // 점수가 올바른 범위에 속하지 않는 경우 경고 메시지를 출력합니다.
+				return;
+			}
+			if (name.length > 20) {
+				alert('이름은 20자 이하만 입력 가능합니다.'); // 이름이 너무 긴 경우 경고 메시지를 출력합니다.
+				return;
+			}
+
+			form.action = "insert.jsp"; // 폼의 action 속성을 "insert.jsp"로 설정합니다.
+			form.submit(); // 폼을 제출합니다.
+		}
+	</script>
+
+	<h1>성적입력추가</h1>
+	<!-- 웹 페이지의 제목을 나타내는 제목 태그 -->
+	<form method='post' id="insert">
+		<!-- POST 방식으로 데이터를 전송하고, 'insert.jsp'로 데이터를 전송하는 폼 -->
+		<!-- 아래 폼을 다 채우고 실행은 insertDB.jsp로 간다. -->
+		<table cellspacing="0" cellpadding="0" width=100% border=0
+			align=center>
+			<!-- 이 테이블은 버튼을 위치하려는 테이블이며, 보더 크기가 0 -->
+			<tr>
+				<!--행 시작-->
+
+				<td><input type="button" value="추가" align=right onclick="go1()"></td>
+
+				<!--두 번째 열에 있는 입력 요소로, 버튼을 나타낸다. 
+                        type="submit"은 입력 요소가 제출 버튼임을 나타내고, value="추가"는 버튼에 표시될 텍스트를 지정-->
+			</tr>
+			<!--행 끝-->
+		</table>
+		<!--테이블 끝-->
+		<table cellspacing="0" cellpadding="1" width=100% border=1
+			align=center>
+			<!-- 입력 항목을 포함한 테이블, 보더 크기가 1 -->
+			<tr>
+				<!--행 시작-->
+				<td align=center>이름</td>
+				<!-- 이름 라벨 -->
+				<td align=center><input type='text' name='name' value=''></td>
+				<!-- 너비가 300인 열, 텍스트를 가운데 정렬,  입력 필드의 타입을 텍스트로 지정, 이름을 'name'으로 지정,
+                        입력 필드의 초기 값으로 빈 문자열을 설정 -->
+			</tr>
+			<!--행 끝-->
+			<tr>
+				<!--행 시작-->
+				<td align=center>학번</td>
+				<!-- 학번 라벨 -->
+				<td align=center>자동부여</td>
+				<!-- 학번 정보 (자동 부여) -->
+			</tr>
+			<!--행 끝-->
+			<tr>
+				<!--행 시작-->
+				<td width=100><p align=center>국어</td>
+				<!-- 국어 점수 라벨 -->
+				<td width=300><p align=center>
+						<input type='text' name='korean' value=''></td>
+				<!-- 너비가 300인 열, 텍스트를 가운데 정렬,  입력 필드의 타입을 텍스트로 지정, 
+                        이름을 'korean'으로 지정, 입력 필드의 초기 값으로 빈 문자열을 설정 -->
+			</tr>
+			<!--행 끝-->
+			<tr>
+				<!--행 시작-->
+				<td align=center>영어</td>
+				<!-- 영어 점수 라벨 -->
+				<td align=center><input type='text' name='english' value=''></td>
+				<!-- 너비가 300인 열, 텍스트를 가운데 정렬,  입력 필드의 타입을 텍스트로 지정, 
+                        이름을 'english'으로 지정,입력 필드의 초기 값으로 빈 문자열을 설정 -->
+			</tr>
+			<!--행 끝-->
+			<tr>
+				<!--행 시작-->
+				<td align=center>수학</td>
+				<!-- 수학 점수 라벨 -->
+				<td align=center><input type='text' name='mathmatic' value=''></td>
+				<!-- 너비가 300인 열, 텍스트를 가운데 정렬,  입력 필드의 타입을 텍스트로 지정, 
+                        이름을 'mathmatic'으로 지정, 입력 필드의 초기 값으로 빈 문자열을 설정 -->
+			</tr>
+			<!--행 끝-->
+		</table>
+		<!--테이블 끝-->
+	</form>
+	<!--폼 끝-->
+</body>
+</head>
+</html>

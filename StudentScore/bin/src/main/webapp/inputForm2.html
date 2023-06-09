@@ -1,0 +1,95 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"\>
+<html>
+<head>
+</head>
+<body>
+	<script>
+		function go2() {
+			const form = document.getElementById('search1'); // 'search1' id를 가진 폼 요소를 가져옵니다.
+			const searchid = form.elements.searchid.value; // searchid 필드의 값을 가져옵니다.
+			const pattern1 = /^\d+$/; // 숫자만 입력 가능한 패턴1
+			const pattern2 = /^.+$/; // 빈 값이 아닌지 확인하는 패턴2
+			const pattern3 = /^[^.]+$/; // 입력 값에 점이 없는지 확인하는 패턴3
+
+			if (!(pattern1.test(searchid)) || !(pattern2.test(searchid))
+					|| !(pattern3.test(searchid))) {
+				alert("잘못된 입력입니다."); // 잘못된 입력 패턴에 맞지 않는 경우 경고 메시지를 출력합니다.
+			} else {
+				form.action = "showREC.jsp"; // 폼의 action 속성을 "showREC.jsp"로 설정합니다.
+				form.submit(); // 폼을 제출합니다.
+			}
+		}
+	</script>
+
+	<h1>성적 조회 후 정정 / 삭제</h1>
+	<!-- 웹 페이지의 제목을 나타내는 제목 태그 -->
+	<form method='post' id="search1">
+		<!-- 아래 폼을 다 채우고 실행은 insertDB.jsp로 간다. -->
+		<table cellspacing="0" cellpadding="0" width=100% border=0
+			align=center>
+			<!-- 테이블의 간격을 1로 설정하고, 너비는 400, 테두리는 없음 -->
+			<tr>
+				<!-- 행 시작 -->
+				<td align=center>조회할 학번</td>
+				<!-- '조회할 학번'이라는 텍스트가 위치한 열, 너비는 300 -->
+				<td align=center><input type='text' name='searchid' value=''></td>
+				<!-- name 속성이 'searchid'인 텍스트 필드가 위치한 열, 너비는 100, 기본값은 없음 -->
+				<td width=100><input type="button" value="조회" onclick="go2()"></td>
+
+				<!-- '조회'라는 버튼이 위치한 열 -->
+			</tr>
+			<!-- 행 끝 -->
+		</table>
+		<table cellspacing="0" cellpadding="1" width=100% border=1
+			align=center>
+			<!-- 입력 항목을 포함한 테이블, 보더 크기가 1 -->
+			<tr>
+				<!--행 시작-->
+				<td align=center>이름</td>
+				<!-- 이름 라벨 -->
+				<td align=center><input type='text' name='name' value=''></td>
+				<!-- 너비가 300인 열, 텍스트를 가운데 정렬,  입력 필드의 타입을 텍스트로 지정, 이름을 'name'으로 지정,
+                            입력 필드의 초기 값으로 빈 문자열을 설정 -->
+			</tr>
+			<!--행 끝-->
+			<tr>
+				<!--행 시작-->
+				<td align=center>학번</td>
+				<!-- 학번 라벨 -->
+				<td align=center>자동부여</td>
+				<!-- 학번 정보 (자동 부여) -->
+			</tr>
+			<!--행 끝-->
+			<tr>
+				<!--행 시작-->
+				<td align=center>국어</td>
+				<!-- 국어 점수 라벨 -->
+				<td align=center><input type='text' name='korean' value=''></td>
+				<!-- 너비가 300인 열, 텍스트를 가운데 정렬,  입력 필드의 타입을 텍스트로 지정, 
+                            이름을 'korean'으로 지정, 입력 필드의 초기 값으로 빈 문자열을 설정 -->
+			</tr>
+			<!--행 끝-->
+			<tr>
+				<!--행 시작-->
+				<td align=center>영어</td>
+				<!-- 영어 점수 라벨 -->
+				<td align=center><input type='text' name='english' value=''></td>
+				<!-- 너비가 300인 열, 텍스트를 가운데 정렬,  입력 필드의 타입을 텍스트로 지정, 
+                            이름을 'english'으로 지정,입력 필드의 초기 값으로 빈 문자열을 설정 -->
+			</tr>
+			<!--행 끝-->
+			<tr>
+				<!--행 시작-->
+				<td align=center>수학</td>
+				<!-- 수학 점수 라벨 -->
+				<td align=center><input type='text' name='mathmatic' value=''></td>
+				<!-- 너비가 300인 열, 텍스트를 가운데 정렬,  입력 필드의 타입을 텍스트로 지정, 
+                            이름을 'mathmatic'으로 지정, 입력 필드의 초기 값으로 빈 문자열을 설정 -->
+			</tr>
+			<!--행 끝-->
+		</table>
+		<!--테이블 끝-->
+	</form>
+	<!--form 끝-->
+</body>
+</html>

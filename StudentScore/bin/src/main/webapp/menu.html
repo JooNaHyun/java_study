@@ -1,0 +1,28 @@
+<!DOCTYPE html> <!-- 문서 유형을 정의 -->
+<html lang="en"> <!-- 언어와 함께 HTML 태그의 시작을 나타냄 -->
+
+<head> <!-- 문서의 헤더 정보를 나타냄 -->
+    <meta charset="UTF-8"> <!-- 문서의 문자 인코딩 방식을 설정 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 렌더링 엔진을 지정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 모바일 장치의 화면 크기에 따라 화면 비율을 조정하기 위한 메타 태그 -->
+    <title>intro.jsp</title> <!-- 문서의 제목을 설정 -->
+</head>
+<body>
+    <!--<ul> 태그는 Unordered List(정렬되지 않은 목록)이며 여러 개의 <li> 태그를 포함한다-->
+    <ul>
+        <!--<ul> 태그 안에 작성된 <li> 태그들로 하위 항목을 표시한다.-->
+        <!--클릭시 createDB.jsp로 이동하게 되고 결과는 target의 이름이 result인 곳으로 가서 보여진다.-->
+        <li><a href="createDB.jsp" target="result">* TBL 생성</a></li>
+        <!--클릭시 dropDB.jsp로 이동하게 되고 결과는 target의 이름이 result인 곳으로 가서 보여진다.-->
+        <li><a href="dropDB.jsp" target="result">* TBL 삭제</a></li>
+        <!--클릭시 AllsetDB.jsp로 이동하게 되고 결과는 target의 이름이 result인 곳으로 가서 보여진다.-->
+        <li><a href="AllsetDB.jsp" target="result">* TBL 값넣기</a></li>
+        <!--클릭시 Allview.jsp로 이동하게 되고 결과는 target의 이름이 result인 곳으로 가서 보여진다.-->
+        <li><a href="AllviewDB.jsp" target="result">* TBL 전체조회</a></li>
+        <br>
+        <li><a href="inputForm1.html" target="result">* 추가</a></li>
+        <li><a href="inputForm2.html" target="result">* 정정/삭제</a></li>
+    </ul>
+</body>
+</html>
